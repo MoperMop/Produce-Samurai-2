@@ -66,11 +66,13 @@ function draw(){
 
 
         for(var fruits = fruitGroup.length-1; fruits > -1; fruits = fruits-1){
-            if(fruitGroup[fruits].isTouching(knife)
-             || fruitGroup[fruits].x < -100){
+            if(fruitGroup[fruits].isTouching(knife)){
                 fruitGroup[fruits].lifetime = 0;
                 score = score+1;
                 sliceSound.play();
+            }
+            if(fruitGroup[fruits].x < -100 || fruitGroup[fruits].x > 800){
+                fruitGroup[fruits].lifetime = 0;
             }
         }
         for(var aleins = aleinGroup.length-1; aleins > -1; aleins = aleins-1){
@@ -84,7 +86,7 @@ function draw(){
                 }
                 gamestate = END;
                 knife.visible = false;
-            }else if(aleinGroup[aleins].x < -100){
+            }else if(aleinGroup[aleins].x < -100 || aleinGroup[aleins].x > 800){
                 aleinGroup[aleins].lifetime = 0;
             }
         }
